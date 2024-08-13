@@ -108,7 +108,7 @@ def main():
         
         if st.button("Claude Output"):
             with st.spinner("Processing..."):
-                faiss_index = FAISS.load_local("faiss_index", bedrock_embeddings)
+                faiss_index = FAISS.load_local("faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
                 llm = get_claude_llm()
                 st.write(get_response_llm(llm, faiss_index, user_question))
                 st.success("Done")
